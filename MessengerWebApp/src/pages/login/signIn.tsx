@@ -19,6 +19,7 @@ const SignIn = () => {
             title="Send Verification Code"
             className="bg-primary text-white w-full"
             size="md"
+            link="/login/otp"
           />
           <Button
             title="Forget Password?"

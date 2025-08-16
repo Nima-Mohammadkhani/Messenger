@@ -33,7 +33,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const [hidePassword, setHidePassword] = useState(!!secureTextEntry);
 
     return (
-      <div className={cn("w-full mb-4", containerClassName)}>
+      <div className={cn("mb-4", containerClassName)}>
         {label && <label className="mb-1 block">{label}</label>}
 
         <div
