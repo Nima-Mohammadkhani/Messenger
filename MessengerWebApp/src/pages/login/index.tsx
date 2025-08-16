@@ -32,7 +32,7 @@ const Index = () => {
         </div>
         <div className="flex flex-col justify-center items-center gap-2 text-center">
           <h3 className="font-bold text-2xl">Welcome to ChatApp</h3>
-          <p className="text-gray-400">
+          <p className="font-light text-gray-400">
             Connect with friends and family with our secure, fast messaging
             platform
           </p>
@@ -54,6 +54,7 @@ const Index = () => {
           title="Get Started"
           className="bg-primary text-white w-full"
           size="md"
+          link={"/login/signIn"}
         />
       </div>
     </section>

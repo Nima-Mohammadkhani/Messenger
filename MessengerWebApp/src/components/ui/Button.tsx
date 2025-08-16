@@ -2,6 +2,7 @@ import React from "react";
 import { Loader2 } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { Link } from "react-router-dom";
+import Icon from "./Icon";
 
 export interface ButtonProps {
   title?: string;
@@ -71,9 +72,9 @@ const Button: React.FC<ButtonProps> = ({
         <Loader2 className="h-5 w-5 animate-spin" />
       ) : (
         <>
-          {iconLeft && <span className="flex-shrink-0">{iconLeft}</span>}
+          {iconLeft && <Icon name={iconLeft} />}
           {title && <span className={textClasses}>{title}</span>}
-          {iconRight && <span className="flex-shrink-0">{iconRight}</span>}
+          {iconRight && <Icon name={iconRight} />}
         </>
       )}
     </>

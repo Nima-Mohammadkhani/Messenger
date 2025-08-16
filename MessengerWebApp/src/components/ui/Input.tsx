@@ -34,12 +34,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={cn("w-full mb-4", containerClassName)}>
-        {label && <label className="mb-1 block text-gray-700">{label}</label>}
+        {label && <label className="mb-1 block">{label}</label>}
 
         <div
           className={cn(
             "flex items-center border rounded-lg px-3 transition-colors",
-            isFocused ? "border-blue-500" : "border-gray-300",
+            isFocused ? "border-primary" : "border-gray-300",
             error && "border-red-500"
           )}
         >
