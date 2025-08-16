@@ -20,11 +20,17 @@ const SignIn = () => {
             className="bg-primary text-white w-full"
             size="md"
           />
-          <Button title="Forget Password?" className="w-full" size="md" />
+          <Button
+            title="Forget Password?"
+            className="w-full"
+            size="md"
+            link="/login/forgetPassword"
+          />
           <Button
             title="Don't have an account? Sign up"
             className="w-full"
             size="md"
+            link="/login/signUp"
           />
         </div>
       </div>
