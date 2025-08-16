@@ -1,29 +1,14 @@
 import { useState, useEffect } from "react";
-import ChatList from "./ChatList";
-import ChatWindow from "./ChatWindow";
+import { useParams, useNavigate } from "react-router-dom";
+import ChatWindow from "../../components/ChatWindow";
+import ChatList from "../../components/ChatList";
+import { Chat, Message } from "../../types/chat";
 
-interface Chat {
-  id: string;
-  name: string;
-  lastMessage: string;
-  time: string;
-  unreadCount: number;
-  avatar: string;
-  isOnline: boolean;
-}
-
-interface Message {
-  id: string;
-  text: string;
-  sender: "me" | "other";
-  timestamp: string;
-  isRead: boolean;
-}
-
-const Messenger = () => {
-  const [selectedChatId, setSelectedChatId] = useState<string | null>(null);
+const ChatPage = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const [isMobileView, setIsMobileView] = useState(false);
-  const [showChatList, setShowChatList] = useState(true);
+  const [showChatList, setShowChatList] = useState(false);
 
   const [chats] = useState<Chat[]>([
     {
@@ -140,9 +125,10 @@ const Messenger = () => {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobileView(window.innerWidth < 768);
-      if (window.innerWidth >= 768) {
-        setShowChatList(true);
+      const mobile = window.innerWidth < 768;
+      setIsMobileView(mobile);
+      if (mobile) {
+        setShowChatList(false);
       }
     };
 
@@ -152,19 +138,27 @@ const Messenger = () => {
   }, []);
 
   const handleChatSelect = (chatId: string) => {
-    setSelectedChatId(chatId);
-    if (isMobileView) {
+    if (chatId !== id) {
+      navigate(`/chat/${chatId}`);
+    } else if (isMobileView && showChatList) {
+      setShowChatList(false);
+    }
+  };
+
+  const handleMobileChatSelect = (chatId: string) => {
+    if (chatId !== id) {
+      navigate(`/chat/${chatId}`);
+    } else {
       setShowChatList(false);
     }
   };
 
   const handleBackToChats = () => {
-    setShowChatList(true);
-    setSelectedChatId(null);
+      navigate("/");
   };
 
   const handleSendMessage = (text: string) => {
-    if (selectedChatId) {
+    if (id) {
       const newMessage: Message = {
         id: Date.now().toString(),
         text,
@@ -178,24 +172,63 @@ const Messenger = () => {
 
       setMessages((prev) => ({
         ...prev,
-        [selectedChatId]: [...(prev[selectedChatId] || []), newMessage],
+        [id]: [...(prev[id] || []), newMessage],
       }));
     }
   };
 
-  const selectedChat = selectedChatId
-    ? chats.find((chat) => chat.id === selectedChatId) || null
-    : null;
-  const currentMessages = selectedChatId ? messages[selectedChatId] || [] : [];
+  const selectedChat = chats.find((chat) => chat.id === id) || null;
+  const currentMessages = id ? messages[id] || [] : [];
+
+  useEffect(() => {
+    if (id && !selectedChat) {
+      navigate("/");
+    }
+  }, [id, selectedChat, navigate]);
+
+  useEffect(() => {
+    if (isMobileView && id) {
+      setShowChatList(false);
+    }
+  }, [id, isMobileView]);
+
+  useEffect(() => {
+    if (isMobileView) {
+      setShowChatList(false);
+    }
+  }, [isMobileView]);
+
+  if (!id || !selectedChat) {
+    return null;
+  }
 
   if (isMobileView) {
     if (showChatList) {
       return (
         <div className="h-screen">
+          <div className="flex items-center p-4 border-b border-gray-200 bg-white">
+            <button
+              onClick={() => navigate("/")}
+              className="p-2 hover:bg-gray-100 rounded-full mr-2"
+            >
+              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <h2 className="text-xl font-semibold text-gray-800">Messages</h2>
+            <button
+              onClick={() => setShowChatList(false)}
+              className="ml-auto p-2 hover:bg-gray-100 rounded-full"
+            >
+              <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+            </button>
+          </div>
           <ChatList
             chats={chats}
-            selectedChatId={selectedChatId}
-            onChatSelect={handleChatSelect}
+            selectedChatId={id}
+            onChatSelect={handleMobileChatSelect}
           />
         </div>
       );
@@ -212,12 +245,13 @@ const Messenger = () => {
       );
     }
   }
+
   return (
     <div className="h-screen flex min-w-0 w-full">
       <div className="w-80 flex-shrink-0">
         <ChatList
           chats={chats}
-          selectedChatId={selectedChatId}
+          selectedChatId={id}
           onChatSelect={handleChatSelect}
         />
       </div>
@@ -232,4 +266,4 @@ const Messenger = () => {
   );
 };
 
-export default Messenger;
+export default ChatPage;

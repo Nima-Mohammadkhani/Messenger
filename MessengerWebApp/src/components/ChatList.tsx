@@ -1,22 +1,15 @@
 import Icon from "./ui/Icon";
-
-interface Chat {
-  id: string;
-  name: string;
-  lastMessage: string;
-  time: string;
-  unreadCount: number;
-  avatar: string;
-  isOnline: boolean;
-}
+import { Chat } from "../types/chat";
 
 interface ChatListProps {
   chats: Chat[];
   selectedChatId: string | null;
   onChatSelect: (chatId: string) => void;
+  showHeader?: boolean;
+  showBorderRight?: boolean;
 }
 
-const ChatList = ({ chats, selectedChatId, onChatSelect }: ChatListProps) => {
+const ChatList = ({ chats, selectedChatId, onChatSelect}: ChatListProps) => {
   return (
     <div className="w-full h-full flex flex-col bg-white border-r border-gray-200">
       <div className="flex justify-between items-center p-4 border-b border-gray-200">

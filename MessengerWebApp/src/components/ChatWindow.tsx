@@ -1,13 +1,6 @@
 import Icon from "./ui/Icon";
 import { useState } from "react";
-
-interface Message {
-  id: string;
-  text: string;
-  sender: "me" | "other";
-  timestamp: string;
-  isRead: boolean;
-}
+import { Message } from "../types/chat";
 
 interface ChatWindowProps {
   selectedChat: {
