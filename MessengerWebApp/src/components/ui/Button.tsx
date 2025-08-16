@@ -1,10 +1,12 @@
 import React from "react";
 import { Loader2 } from "lucide-react";
 import { cn } from "../../lib/utils";
+import { Link } from "react-router-dom";
 
 export interface ButtonProps {
   title?: string;
   onClick?: () => void;
+  link?: string;
   variant?: "primary" | "secondary" | "outline" | "danger" | string;
   size?: "sm" | "md" | "lg" | "icon" | string;
   className?: string;
@@ -19,6 +21,7 @@ export interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({
   title,
   onClick,
+  link,
   variant = "",
   size = "",
   className = "",
@@ -62,12 +65,8 @@ const Button: React.FC<ButtonProps> = ({
     disabled && "text-gray-300"
   );
 
-  return (
-    <button
-      onClick={!disabled && !loading ? onClick : undefined}
-      disabled={disabled || loading}
-      className={buttonClasses}
-    >
+  const content = (
+    <>
       {loading ? (
         <Loader2 className="h-5 w-5 animate-spin" />
       ) : (
@@ -77,6 +76,24 @@ const Button: React.FC<ButtonProps> = ({
           {iconRight && <span className="flex-shrink-0">{iconRight}</span>}
         </>
       )}
+    </>
+  );
+
+  if (link && !disabled) {
+    return (
+      <Link to={link} onClick={onClick} className={buttonClasses}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <button
+      onClick={!disabled && !loading ? onClick : undefined}
+      disabled={disabled || loading}
+      className={buttonClasses}
+    >
+      {content}
     </button>
   );
 };
