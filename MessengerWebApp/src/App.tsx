@@ -18,8 +18,10 @@ function App() {
   return (
     <BrowserRouter>
       <PWABadge />
-      <ThemeToggle />
-      <AppRoutes />
+      <div className="w-full min-h-screen flex flex-col p-6 bg-base-200">
+        <ThemeToggle />
+        <AppRoutes />
+      </div>
     </BrowserRouter>
   );
 }
