@@ -2,11 +2,15 @@ import { VitePWA } from "vite-plugin-pwa";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-// https://vitejs.dev/config/
+import Pages from "vite-plugin-pages";
 export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
+    Pages({
+      dirs: "src/pages",
+      extensions: ["tsx", "ts", "jsx", "js"],
+    }),
     VitePWA({
       registerType: "autoUpdate",
       injectRegister: false,
