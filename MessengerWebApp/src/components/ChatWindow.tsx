@@ -131,7 +131,7 @@ const ChatWindow = ({
           </div>
         ))}
       </div>
-      <div className="p-4 border-t border-gray-200 bg-white">
+      <div className="sticky bottom-0 p-4 border-t border-gray-200 bg-white">
         <div className="flex gap-3">
           <div className="flex-1 relative">
             <textarea
