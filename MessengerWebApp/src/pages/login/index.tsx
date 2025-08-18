@@ -25,7 +25,7 @@ const Index = () => {
   ];
 
   return (
-    <section className="flex flex-col justify-center items-center gap-6 flex-1 p-6">
+    <section className="flex flex-col justify-center items-center gap-6 h-dvh p-6">
       <div className="flex flex-col justify-center items-center gap-4">
         <div className="bg-primary rounded-xl p-4">
           <Icon name="MessageSquare" size={30} color="white" />

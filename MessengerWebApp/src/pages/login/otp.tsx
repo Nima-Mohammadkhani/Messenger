@@ -24,7 +24,7 @@ const Otp = () => {
   };
 
   return (
-    <section className="flex flex-col justify-center items-center gap-6 flex-1 p-6">
+    <section className="flex flex-col justify-center items-center gap-6 h-dvh p-6">
       <div className="flex flex-col gap-4 w-full max-w-4xl">
         <div className="self-start">
           <Button
