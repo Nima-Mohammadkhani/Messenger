@@ -1,6 +1,6 @@
 import Icon from "./ui/Icon";
 import { Chat } from "../types/chat";
-
+import { AnimatePresence, motion } from "framer-motion";
 interface ChatListProps {
   chats: Chat[];
   selectedChatId: string | null;
@@ -9,17 +9,47 @@ interface ChatListProps {
   showBorderRight?: boolean;
 }
 
-const ChatList = ({ chats, selectedChatId, onChatSelect}: ChatListProps) => {
+const ChatList = ({ chats, selectedChatId, onChatSelect }: ChatListProps) => {
+  const containerVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        ease: "easeIn" as const,
+        delay: 0.2,
+        duration: 0.4,
+        delayChildren: 0.2,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { ease: "easeIn" as const, duration: 0.4 },
+    },
+  };
+
   return (
-    <div className="w-full h-full flex flex-col bg-white border-r border-gray-200">
+    <motion.section
+      className="w-full h-full flex flex-col bg-white border-r border-gray-200"
+      variants={containerVariant}
+      initial="hidden"
+      animate="visible"
+    >
       <div className="flex justify-between items-center p-4 border-b border-gray-200">
         <h2 className="text-xl font-semibold text-gray-800">Messages</h2>
         <Icon name="Search" className="w-5 h-5 text-gray-600" />
       </div>
       <div className="flex-1 overflow-y-auto">
         {chats.map((chat) => (
-          <div
+          <motion.div
             key={chat.id}
+            variants={itemVariant}
             onClick={() => onChatSelect(chat.id)}
             className={`flex items-center gap-3 p-4 cursor-pointer hover:bg-gray-50 transition-colors ${
               selectedChatId === chat.id
@@ -65,10 +95,10 @@ const ChatList = ({ chats, selectedChatId, onChatSelect}: ChatListProps) => {
                 )}
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.section>
   );
 };
 
