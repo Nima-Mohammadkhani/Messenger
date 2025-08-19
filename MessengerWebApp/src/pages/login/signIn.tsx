@@ -27,7 +27,7 @@ const SignIn = () => {
       opacity: 1,
       y: 0,
       transition: {
-        ease: "easeIn",
+        ease: "easeIn" as const,
         delay: 0.2,
         duration: 0.4,
         delayChildren: 0.2,
@@ -41,7 +41,7 @@ const SignIn = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { ease: "easeIn", duration: 0.4 },
+      transition: { ease: "easeIn" as const, duration: 0.4 },
     },
   };
 
