@@ -1,7 +1,7 @@
 import React, { forwardRef, useState } from "react";
 import { TextInput, View, Text, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { InputProps } from "@/type";
+import { InputProps } from "@/types/ui";
 
 const Input = forwardRef<TextInput, InputProps>(
   (

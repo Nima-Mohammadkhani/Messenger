@@ -9,7 +9,7 @@ import {
   Easing,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { ButtonProps } from "@/type";
+import { ButtonProps } from "@/types/ui";
 
 const Button = ({
   title,
