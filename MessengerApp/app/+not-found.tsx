@@ -1,32 +1,45 @@
-import { Link, Stack } from 'expo-router';
-import { StyleSheet } from 'react-native';
+import React from "react";
+import { View, Text } from "react-native";
+import { Stack, useRouter } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+import Button from "@/components/ui/Button";
 
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const NotFoundScreen = () => {
+  const router = useRouter();
 
-export default function NotFoundScreen() {
   return (
     <>
-      <Stack.Screen options={{ title: 'Oops!' }} />
-      <ThemedView style={styles.container}>
-        <ThemedText type="title">This screen does not exist.</ThemedText>
-        <Link href="/" style={styles.link}>
-          <ThemedText type="link">Go to home screen!</ThemedText>
-        </Link>
-      </ThemedView>
+      <Stack.Screen options={{ headerShown: false }} />
+      <View className="flex-1 items-center justify-center bg-white px-6">
+        <Ionicons name="alert-circle-outline" size={84} color="#FE8C00" />
+
+        <Text className="mt-6 text-3xl font-bold text-gray-900">
+          Page not found
+        </Text>
+        <Text className="mt-2 text-center text-base text-gray-500">
+          The page you are looking for doesn’t exist or was moved.
+        </Text>
+
+        <View className="mt-6 flex-row items-center gap-3">
+          <Button
+            title="Go Home"
+            size="md"
+            textClassName="text-black"
+            className="bg-blue-500rounded-full px-5"
+            iconLeft="home-outline"
+            onPress={() => router.replace("/(tabs)")}
+          />
+          <Button
+            title="Go Back"
+            size="md"
+            textClassName="text-gray-800"
+            className="bg-gray-100 rounded-full px-5"
+            iconLeft="arrow-back"
+            onPress={() => router.back()}
+          />
+        </View>
+      </View>
     </>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-  },
-  link: {
-    marginTop: 15,
-    paddingVertical: 15,
-  },
-});
+};
+export default NotFoundScreen;
