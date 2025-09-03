@@ -60,21 +60,16 @@ const Index = () => {
   }, []);
 
   const handleChatSelect = (chatId: string) => {
-    router.push({
-      pathname: "/chat/[id]",
-      params: { id: chatId },
-    });
+    router.push(`/(tabs)/chat/${chatId}` as any);
   };
 
   if (isMobileView) {
     return (
-      <SafeAreaView className="flex-1" edges={["top", "bottom"]}>
-        <ChatList
-          chats={chats}
-          selectedChatId={null}
-          onChatSelect={handleChatSelect}
-        />
-      </SafeAreaView>
+      <ChatList
+        chats={chats}
+        selectedChatId={null}
+        onChatSelect={handleChatSelect}
+      />
     );
   }
 
