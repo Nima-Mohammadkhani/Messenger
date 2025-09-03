@@ -37,9 +37,9 @@ const ChatWindow = ({
   };
 
   const buttons = [
-    { name: "call", className: "w-5 h-5 text-gray-600" },
-    { name: "videocam", className: "w-5 h-5 text-gray-600" },
-    { name: "ellipsis-vertical", className: "w-5 h-5 text-gray-600" },
+    { name: "Phone", className: "w-5 h-5 text-gray-600" },
+    { name: "Video", className: "w-5 h-5 text-gray-600" },
+    { name: "MoreVertical", className: "w-5 h-5 text-gray-600" },
   ];
 
   const containerVariant = {
@@ -197,7 +197,7 @@ const ChatWindow = ({
             disabled={!messageText.trim()}
             className="px-4 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            <Icon name="send" className="w-5 h-5" />
+            <Icon name="Send" className="w-5 h-5" />
           </button>
         </div>
       </div>
