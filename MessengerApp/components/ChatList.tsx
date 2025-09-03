@@ -14,7 +14,7 @@ interface ChatListProps {
 
 const ChatList = ({ chats, selectedChatId, onChatSelect }: ChatListProps) => {
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <SafeAreaView className="flex-1">
       <View className="flex-1 border-r border-gray-200">
         <View className="flex-row justify-between items-center p-4 border-b border-gray-200">
           <Text className="text-xl font-semibold text-gray-800">Messages</Text>
