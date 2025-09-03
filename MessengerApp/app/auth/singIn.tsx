@@ -35,7 +35,7 @@ const SignIn = () => {
         <View className="flex-col gap-4 w-full max-w-4xl">
           <View className="self-start">
             <Button 
-              iconLeft="ArrowLeft" 
+              iconLeft="arrow-back" 
               title="Welcome Back" 
               onPress={() => router.back()} 
             />

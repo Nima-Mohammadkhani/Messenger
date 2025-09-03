@@ -41,15 +41,18 @@ const ChatWindow = ({
   };
 
   const buttons = [
-    { name: "Phone", className: "w-5 h-5 text-gray-600" },
-    { name: "Video", className: "w-5 h-5 text-gray-600" },
-    { name: "MoreVertical", className: "w-5 h-5 text-gray-600" },
+    { name: "call", className: "w-5 h-5 text-gray-600" },
+    { name: "videocam", className: "w-5 h-5 text-gray-600" },
+    { name: "ellipsis-vertical", className: "w-5 h-5 text-gray-600" },
   ];
 
   if (!selectedChat) {
     return (
       <SafeAreaView className="flex-1 items-center justify-center bg-gray-50">
-        <Icon name="MessageCircle" className="w-16 h-16 text-gray-300 mb-4" />
+        <Icon
+          name="chatbubble-outline"
+          className="w-16 h-16 text-gray-300 mb-4"
+        />
         <Text className="text-lg text-gray-500">Select a chat</Text>
         <Text className="text-sm text-gray-500 mt-1">
           Choose a chat to start a conversation
@@ -60,7 +63,7 @@ const ChatWindow = ({
 
   return (
     <SafeAreaView className="flex-1 bg-white">
-      <KeyboardAvoidingView 
+      <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 0}
@@ -71,7 +74,7 @@ const ChatWindow = ({
               onPress={onBackToChats}
               className="p-2 rounded-full"
             >
-              <Icon name="ArrowLeft" className="w-5 h-5 text-gray-600" />
+              <Icon name="arrow-back" className="w-5 h-5 text-gray-600" />
             </TouchableOpacity>
           )}
           <View className="relative ml-2">
@@ -157,7 +160,7 @@ const ChatWindow = ({
                 messageText.trim() ? "bg-blue-500" : "bg-gray-300 opacity-50"
               }`}
             >
-              <Icon name="Send" className="w-5 h-5 text-white" />
+              <Icon name="send" className="w-5 h-5 text-white" />
             </TouchableOpacity>
           </View>
         </View>

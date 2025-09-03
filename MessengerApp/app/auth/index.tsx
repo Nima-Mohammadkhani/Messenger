@@ -6,20 +6,20 @@ import Icon from "@/components/ui/Icon";
 
 const Index = () => {
   const router = useRouter();
-  
+
   const features = [
     {
-      icon: "Shield",
+      icon: "shield-checkmark",
       title: "End-to-End Encryption",
       description: "Your messages are secure and private",
     },
     {
-      icon: "Zap",
+      icon: "flash",
       title: "Lightning Fast",
       description: "Instant message delivery worldwide",
     },
     {
-      icon: "Users",
+      icon: "people",
       title: "Group Chats",
       description: "Create groups with up to 256 members",
     },
@@ -27,15 +27,15 @@ const Index = () => {
 
   return (
     <SafeAreaView className="flex-1 justify-center items-center p-6 bg-white">
-      <ScrollView 
+      <ScrollView
         className="flex-1 w-full"
-        contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
+        contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
         showsVerticalScrollIndicator={false}
       >
         <View className="flex-col justify-center items-center gap-6">
           <View className="flex-col justify-center items-center gap-4">
-            <View className="bg-blue-500 rounded-xl p-4">
-              <Icon name="MessageSquare" className="w-8 h-8 text-white" />
+            <View className="flex justify-center bg-blue-500 rounded-xl p-4">
+              <Icon name="chatbubbles-outline" className="text-white" />
             </View>
             <View className="flex-col justify-center items-center gap-2">
               <Text className="font-bold text-2xl text-center text-gray-900">
@@ -51,8 +51,8 @@ const Index = () => {
           <View className="flex-col items-start gap-4 w-full max-w-4xl">
             {features.map((item, i) => (
               <View key={i} className="flex-row items-center gap-4">
-                <View className="flex justify-center items-center rounded-full border-2 border-blue-500 bg-gray-100 w-10 h-10 p-2">
-                  <Icon name={item.icon} className="w-5 h-5 text-blue-500" />
+                <View className="flex justify-center items-center rounded-full border-2 border-blue-500 bg-gray-100 p-2">
+                  <Icon name={item.icon} className=" text-blue-500" />
                 </View>
                 <View className="flex-col gap-1">
                   <Text className="font-bold text-sm text-gray-900">

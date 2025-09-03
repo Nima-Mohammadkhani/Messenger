@@ -18,7 +18,7 @@ export default function RootLayout() {
 
   return (
     <>
-      {/* {!user ? <Redirect href="/auth" /> : <Redirect href="/(tabs)" />} */}
+      {!user ? <Redirect href="/auth" /> : <Redirect href="/(tabs)" />}
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="auth" options={{ headerShown: false }} />

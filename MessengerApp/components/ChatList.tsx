@@ -18,7 +18,7 @@ const ChatList = ({ chats, selectedChatId, onChatSelect }: ChatListProps) => {
       <View className="flex-1 border-r border-gray-200">
         <View className="flex-row justify-between items-center p-4 border-b border-gray-200">
           <Text className="text-xl font-semibold text-gray-800">Messages</Text>
-          <Icon name="Search" className="w-5 h-5 text-gray-600" />
+          <Icon name="search" className="w-5 h-5 text-gray-600" />
         </View>
 
         <ScrollView className="flex-1">

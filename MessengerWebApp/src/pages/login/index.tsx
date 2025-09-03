@@ -54,7 +54,7 @@ const Index = () => {
     >
       <div className="flex flex-col justify-center items-center gap-4">
         <div className="bg-primary rounded-xl p-4">
-          <Icon name="MessageSquare" size={30} color="white" />
+          <Icon name="chatbubbles-outline" size={30} color="white" />
         </div>
         <div className="flex flex-col justify-center items-center gap-2 text-center">
           <h3 className="font-bold text-2xl">Welcome to ChatApp</h3>
