@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 export interface IconProps {
-  name: keyof typeof Ionicons.glyphMap; // مستقیم از Ionicons استفاده می‌کنیم
+  name: keyof typeof Ionicons.glyphMap;
   size?: "sm" | "md" | "lg" | number;
   color?: string;
   label?: string;
